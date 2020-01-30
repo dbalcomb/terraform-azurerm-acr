@@ -1,6 +1,16 @@
+locals {
+  tags = merge(local.default_tags, var.tags)
+  default_tags = {
+    environment = var.environment
+    provisioner = var.provisioner
+    stack       = var.stack
+  }
+}
+
 resource "azurerm_resource_group" "main" {
   name     = format("%s-rg", var.name)
   location = var.location
+  tags     = local.tags
 }
 
 resource "azurerm_container_registry" "main" {
@@ -9,4 +19,5 @@ resource "azurerm_container_registry" "main" {
   location            = azurerm_resource_group.main.location
   sku                 = var.sku
   admin_enabled       = true
+  tags                = local.tags
 }
