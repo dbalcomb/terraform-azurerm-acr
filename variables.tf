@@ -18,11 +18,3 @@ variable "dns_prefix" {
   description = "The registry DNS prefix"
   type        = string
 }
-
-variable "service_principal" {
-  description = "The service principal"
-  default     = null
-  type = object({
-    id = string
-  })
-}
