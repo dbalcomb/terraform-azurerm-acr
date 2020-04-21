@@ -1,9 +1,10 @@
 module "acr" {
   source = "../../"
 
-  name       = "my-first-registry"
-  location   = "uksouth"
-  dns_prefix = "myfirstregistry"
+  name   = "my-registry"
+  region = "uksouth"
+  prefix = "myregistry"
+  tier   = "Standard"
 
   tags = {
     custom = "yes"
