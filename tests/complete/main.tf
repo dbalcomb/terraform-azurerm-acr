@@ -10,3 +10,12 @@ module "acr" {
     custom = "yes"
   }
 }
+
+module "image" {
+  source = "../../modules/image"
+
+  name      = "my-image"
+  namespace = "custom"
+  tag       = "latest"
+  registry  = module.acr
+}
