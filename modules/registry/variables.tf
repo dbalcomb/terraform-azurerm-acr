@@ -3,13 +3,13 @@ variable "name" {
   type        = string
 }
 
-variable "region" {
-  description = "The target resource region"
+variable "group" {
+  description = "The target resource group"
   type        = string
 }
 
-variable "prefix" {
-  description = "The registry domain prefix"
+variable "region" {
+  description = "The target resource region"
   type        = string
 }
 

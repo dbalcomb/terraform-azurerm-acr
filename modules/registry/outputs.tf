@@ -1,44 +1,40 @@
 output "id" {
   description = "The registry ID"
-  value       = module.registry.id
+  value       = azurerm_container_registry.main.id
 }
 
 output "name" {
   description = "The registry name"
-  value       = var.name
+  value       = azurerm_container_registry.main.name
 }
 
 output "group" {
   description = "The target resource group"
-  value       = module.registry.group
+  value       = azurerm_container_registry.main.resource_group_name
 }
 
 output "region" {
   description = "The target resource region"
-  value       = module.registry.region
-}
-
-output "prefix" {
-  description = "The registry domain prefix"
-  value       = module.registry.name
+  value       = azurerm_container_registry.main.location
 }
 
 output "tier" {
   description = "The registry service tier"
-  value       = module.registry.tier
+  value       = azurerm_container_registry.main.sku
 }
 
 output "url" {
   description = "The server address URL"
-  value       = module.registry.url
+  value       = azurerm_container_registry.main.login_server
 }
 
 output "username" {
   description = "The admin account username"
-  value       = module.registry.username
+  value       = azurerm_container_registry.main.admin_username
 }
 
 output "password" {
   description = "The admin account password"
-  value       = module.registry.password
+  value       = azurerm_container_registry.main.admin_password
 }
+

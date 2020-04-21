@@ -1,23 +1,23 @@
 locals {
-  tags = merge(local.default_tags, var.tags)
-  default_tags = {
-    environment = var.environment
-    provisioner = var.provisioner
-    stack       = var.stack
-  }
+  tags = merge({
+    environment = "production"
+    provisioner = "terraform"
+    component   = "acr"
+  }, var.tags)
 }
 
 resource "azurerm_resource_group" "main" {
   name     = format("%s-rg", var.name)
-  location = var.location
+  location = var.region
   tags     = local.tags
 }
 
-resource "azurerm_container_registry" "main" {
-  name                = var.dns_prefix
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-  sku                 = var.sku
-  admin_enabled       = true
-  tags                = local.tags
+module "registry" {
+  source = "./modules/registry"
+
+  name   = var.prefix
+  group  = azurerm_resource_group.main.name
+  region = azurerm_resource_group.main.location
+  tier   = var.tier
+  tags   = local.tags
 }

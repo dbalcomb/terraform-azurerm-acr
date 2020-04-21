@@ -1,16 +1,18 @@
-# terraform-azurerm-acr
+# Registry
 
-Terraform modules for [Azure Container Registry (ACR)](https://azure.microsoft.com/en-gb/services/container-registry/).
+This module configures an Azure Container Registry (ACR) that can be used to
+store private container images and cache public ones for both resiliency and
+security purposes.
 
 ## Usage
 
 ```hcl
-module "acr" {
-  source = "github.com/dbalcomb/terraform-azurerm-acr"
+module "registry" {
+  source = "github.com/dbalcomb/terraform-azurerm-acr//modules/registry"
 
-  name   = "my-registry"
+  name   = "myregistry"
+  group  = "my-resource-group"
   region = "uksouth"
-  prefix = "myregistry"
   tier   = "Premium"
 }
 ```
@@ -20,8 +22,8 @@ module "acr" {
 | Name     | Type     | Default | Description                |
 | -------- | -------- | ------- | -------------------------- |
 | `name`   | `string` |         | The registry name          |
+| `group`  | `string` |         | The target resource group  |
 | `region` | `string` |         | The target resource region |
-| `prefix` | `string` |         | The registry domain prefix |
 | `tier`   | `string` | "Basic" | The registry service tier  |
 | `tags`   | `object` | `{}`    | The resource tags          |
 | `tags.*` | `string` |         | The tag value              |
@@ -34,12 +36,11 @@ module "acr" {
 | `name`     | `string` | The registry name          |
 | `group`    | `string` | The target resource group  |
 | `region`   | `string` | The target resource region |
-| `prefix`   | `string` | The registry domain prefix |
 | `tier`     | `string` | The registry service tier  |
 | `url`      | `string` | The server address URL     |
 | `username` | `string` | The admin account username |
 | `password` | `string` | The admin account password |
 
-## Modules
+## References
 
-- [Registry](modules/registry/README.md)
+- [Azure Container Registry](https://docs.microsoft.com/en-gb/azure/container-registry/)
