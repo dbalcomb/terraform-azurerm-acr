@@ -42,4 +42,5 @@ module "acr" {
 
 ## Modules
 
+- [Image](modules/image/README.md)
 - [Registry](modules/registry/README.md)
