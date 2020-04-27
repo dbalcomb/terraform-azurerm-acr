@@ -19,6 +19,12 @@ variable "tier" {
   type        = string
 }
 
+variable "pull_access" {
+  description = "The principal IDs with pull access"
+  default     = {}
+  type        = map(string)
+}
+
 variable "tags" {
   description = "The resource tags"
   default     = {}
