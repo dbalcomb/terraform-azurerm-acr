@@ -15,9 +15,10 @@ resource "azurerm_resource_group" "main" {
 module "registry" {
   source = "./modules/registry"
 
-  name   = var.prefix
-  group  = azurerm_resource_group.main.name
-  region = azurerm_resource_group.main.location
-  tier   = var.tier
-  tags   = local.tags
+  name        = var.prefix
+  group       = azurerm_resource_group.main.name
+  region      = azurerm_resource_group.main.location
+  tier        = var.tier
+  pull_access = var.pull_access
+  tags        = local.tags
 }

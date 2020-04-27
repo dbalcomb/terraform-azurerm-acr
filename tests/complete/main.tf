@@ -6,6 +6,10 @@ module "acr" {
   prefix = "myregistry"
   tier   = "Standard"
 
+  pull_access = {
+    example = "...",
+  }
+
   tags = {
     custom = "yes"
   }

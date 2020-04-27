@@ -17,14 +17,16 @@ module "acr" {
 
 ## Inputs
 
-| Name     | Type     | Default | Description                |
-| -------- | -------- | ------- | -------------------------- |
-| `name`   | `string` |         | The registry name          |
-| `region` | `string` |         | The target resource region |
-| `prefix` | `string` |         | The registry domain prefix |
-| `tier`   | `string` | "Basic" | The registry service tier  |
-| `tags`   | `object` | `{}`    | The resource tags          |
-| `tags.*` | `string` |         | The tag value              |
+| Name            | Type     | Default | Description                        |
+| --------------- | -------- | ------- | ---------------------------------- |
+| `name`          | `string` |         | The registry name                  |
+| `region`        | `string` |         | The target resource region         |
+| `prefix`        | `string` |         | The registry domain prefix         |
+| `tier`          | `string` | "Basic" | The registry service tier          |
+| `pull_access`   | `object` | `{}`    | The principal IDs with pull access |
+| `pull_access.*` | `string` |         | The principal ID                   |
+| `tags`          | `object` | `{}`    | The resource tags                  |
+| `tags.*`        | `string` |         | The tag value                      |
 
 ## Outputs
 
