@@ -37,4 +37,3 @@ output "password" {
   description = "The admin account password"
   value       = azurerm_container_registry.main.admin_password
 }
-
